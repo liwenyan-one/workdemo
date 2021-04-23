@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.workdemo.dao.StudentMapper">
+    <resultMap id="stu" type="com.springboot.workdemo.domain.Student">
+        <id property="no" column="sno"/>
+        <result property="name" column="sname"/>
+        <result property="age" column="sage"/>
+        <result property="gender" column="sgender"/>
+    </resultMap>
+
+    <select id="searchAllStu" resultMap="stu">
+        select * from student
+    </select>
+
+    <select id="searchStuByNo" resultMap="stu">
+        select * from student where sno=#{no}
+    </select>
+
+    <select id="updateStuByNo" resultMap="stu">
+        update student set sname=#{name},sage=#{age},sgender=#{gender} where sno=#{no}
+    </select>
+
+    <select id="deleteStuByNo" resultMap="stu">
+        delete from student where sno=#{no}
+    </select>
+
+    <select id="insertStu" resultMap="stu">
+        insert student values(#{no},#{name},#{age},#{gender})
+    </select>
+</mapper>
+
